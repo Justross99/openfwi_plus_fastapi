@@ -135,7 +135,7 @@ This section provides a complete walkthrough for getting the project running, fr
 
 This project is designed to work with the **OpenFWI** datasets, which are a collection of large-scale, open-source datasets for Full-Waveform Inversion research.
 
-- **Download the Data:** The datasets are publicly available on Zenodo. We recommend starting with the `OpenFWI-A` dataset. You can find and download it here: [https://zenodo.org/records/7886259](https://zenodo.org/records/7886259)
+- **Download the Data:** The datasets are publicly available from the SMILE team. We recommend starting with the `OpenFWI-A` dataset. You can find and download it here: [https://smileunc.github.io/projects/openfwi/datasets](https://smileunc.github.io/projects/openfwi/datasets)
 - **Data Structure:** After downloading and extracting, you should have a directory containing NumPy (`.npy`) files for seismic data and velocity models.
 
 ### 2. Configuring the Environment
