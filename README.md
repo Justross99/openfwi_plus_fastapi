@@ -6,7 +6,7 @@ This project was built as a **reference architecture** to demonstrate the princi
 
 **The Problem:** Many data science projects exist in a research vacuum, often confined to Jupyter notebooks, making them difficult to productionize. Conversely, many backend engineering projects lack the complexity of handling computationally intensive ML workloads.
 
-**The Solution:** OpenFWI was designed to bridge this gap. It is a holistic framework that seamlessly integrates two distinct but connected worlds:
+**The Solution:** This project was designed to bridge this gap. It is a holistic framework that seamlessly integrates two distinct but connected worlds:
 1.  **The ML Research System:** A flexible, high-performance environment for iterative model development.
 2.  **The Production Inference Service:** A robust, scalable, and secure API for delivering the model's value to users.
 
