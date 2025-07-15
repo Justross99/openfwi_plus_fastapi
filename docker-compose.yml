@@ -1,0 +1,40 @@
+version: "3.8"
+
+services:
+  redis:
+    image: "redis:7-alpine"
+    container_name: openfwi-redis
+    ports:
+      # Expose Redis on the host for local development/debugging if needed
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  api:
+    build:
+      context: .
+      dockerfile: dockerfile
+    container_name: openfwi-api
+    depends_on:
+      redis:
+        condition: service_healthy
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    environment:
+      # Override settings to use the Redis service container
+      - REDIS_HOST=redis
+    volumes:
+      # Mount the model artifacts directory from the host into the container.
+      # The host path is specified by MODEL_ARTIFACTS_DIR in your .env file.
+      # The container path must match the ENV var set in the Dockerfile.
+      - ${MODEL_ARTIFACTS_DIR}:/app/app/pretrained
+
+volumes:
+  redis_data:

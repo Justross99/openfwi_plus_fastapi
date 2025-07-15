@@ -1,0 +1,79 @@
+{
+    "seed": 42,
+    "dataset_name": "FlatVel_A",
+    "data_dir": "/mnt/E6B6DC5AB6DC2D35/OPENFWI/FlatVel_A/data",
+    "label_dir": "/mnt/E6B6DC5AB6DC2D35/OPENFWI/FlatVel_A/labels",
+    "output_dir": "output/training_run_long_plus_warmup_flatvel_a",
+    "batch_size": 8,
+    "num_train_epochs": 50,
+    "gradient_accumulation_steps": 1,
+    "learning_rate": 0.0001,
+    "lr_warmup_epochs": 2,
+    "weight_decay": 0.01,
+    "log_every_steps": 50,
+    "checkpoint_every_steps": 1000,
+    "eval_every_epochs": 1,
+    "early_stopping_patience": 10,
+    "early_stopping_metric": "val_loss",
+    "early_stopping_mode": "min",
+    "kl_anneal_epochs": 10,
+    "model_name": "MambaDU",
+    "model_config": {
+        "encoder_name": "mamba",
+        "encoder_config": {
+            "patch_size": 10,
+            "embed_dim": 64,
+            "depth": 4,
+            "mamba_d_state": 16,
+            "mamba_d_conv": 4,
+            "mamba_expand": 2
+        },
+        "latent_dim": 64,
+        "decoder_config": {
+            "start_features": 128,
+            "upsample_blocks": [
+                [
+                    64,
+                    [
+                        85,
+                        38
+                    ]
+                ],
+                [
+                    32,
+                    [
+                        70,
+                        70
+                    ]
+                ]
+            ],
+            "output_channels": 1,
+            "final_activation": "sigmoid"
+        }
+    },
+    "input_shape": [
+        1,
+        5,
+        1000,
+        70
+    ],
+    "output_shape_expected": [
+        1,
+        1,
+        70,
+        70
+    ],
+    "loss_config": {
+        "mae_weight": 1.0,
+        "ssim_weight": 0.0,
+        "percept_weight": 0.0,
+        "kld_weight": 0.0,
+        "ssim_window_size": 7,
+        "max_velocity_val": 4500.0
+    },
+    "perceptual_input_shape": [
+        1,
+        70,
+        70
+    ]
+}

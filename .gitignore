@@ -1,0 +1,32 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Notes
+notes
+
+# Jupyter Notebooks
+*.ipynb
+.ipynb_checkpoints
+
+# Demo files
+demo/
+
+# Temporary directories
+tmp/
+
+# IDE
+.idea/
+.vscode/
